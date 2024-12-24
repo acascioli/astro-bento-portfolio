@@ -1,31 +1,31 @@
+
 export const PROFILE = {
   site: {
     SEO: {
       //     more complicated description for SEO
-      title: "Tech Tim (@TechTim42) - Learn, Share and Grow ❤️",
-      description:
-        "Learn, Share and Grow ❤️ -- Software Engineer | AWS Professional | Open Source Lover  --☘️ Be more productive, Better in communicating, Contribute more to community. | Tech Tim's New Astro Portfolio",
+      title: "Alessandro Cascioli",
+      description: "Energy Engineer | AI & Cybersecurity Enthusiast | PhD in Sustainable Energy & Technologies -- ⚡ driving a greener, smarter future through ethical ai, robust cybersecurity, and sustainable energy systems. | Lifelong Learner, Advocate for Collaboration"
     },
   },
-  timezone: "Australia/Sydney",
-  language: "en-AU",
-  firstName: "Tim",
-  name: "Tech Tim",
-  headLine: "Learn, Share and Grow ❤️",
-  headLine2:
-    "I enjoy providing software solutions and bring ideas to life and solve real-world problems.",
-  website: "https://techtim42.com",
+  timezone: "Europe/Rome",
+  language: "en-US",
+  firstName: "Alessandro",
+  name: "Alessandro Cascioli",
+  email: 'alessandro.cascioli@protonmail.com',
+  piva: '01708920556',
+  headLine: "Learn, Share and Grow",
+  headLine2: "Driving a greener, smarter future through ethical ai, robust cybersecurity, and sustainable energy systems.",
+  website: "https://alessandrocascioli.it",
   repo: "https://github.com/tim-hub/techtim-astro-bento-portfolio",
-  avatarUrl: "https://techtim42.com/techtim42.webp",
+  avatarUrl: "/assets/Cascioli/Cascioli_pic.jpg",
   shortIntros: [
-    "💻 Software/AI Engineer | Open Source Lover | Self-starter",
-    "☁️ AWS Professional | AWS Community Builder",
-    "☘️ Passionate about Dev Experience(DX) Improvement and bringing ideas to life",
-    "📈 Unprofessional Investor",
-    "🌱 Part-time blogger and unprofessional Youtuber",
-    "📚 Book reader | 🥏 Frisbee Ultimate Player | 🎲 Board Game Player",
+    "⚡️ Energy Engineer",
+    "🤖 AI Enthusiast",
+    "💻 Software/AI Engineer",
+    "☘️ Passionate about constantly learning new stuff and bringing ideas to life",
+    "📚 Book reader | 🎧 Music addicted",
   ],
-  words: ["As each one has received a gift, minister it to one another"],
+  words: ["Ignoranti quem portum petat nullus suus ventus est", "Non quia difficilia sunt non audemus, sed quia non audemus difficilia sunt"],
   skills: [
     "Python / Django",
     "JavaScript",
@@ -40,38 +40,48 @@ export const PROFILE = {
     "Astro",
   ],
   links: {
-    github: "https://github.com/tim-hub",
-    medium: "https://medium.com/@TechTim42",
-    twitter: "https://twitter.com/TechTim42",
-    bluesky: "https://bsky.app/profile/techtim.bsky.social",
-    thread: "https://www.threads.net/@techtim2024",
-    mastodon: "https://mastodon.social/@techtim42",
-    youtube: "https://www.youtube.com/@techtim42",
-    stackoverflow: "https://stackoverflow.com/users/5249708/tim",
-    devto: "https://dev.to/timhub",
-    goodreads: "",
+    github: "https://github.com/acascioli",
+    onion: "http://alex3ietksowmumwj7dudct7wqtvlihssnc2s2uqa76j4frgbot2inad.onion",
+    linkedin: "https://www.linkedin.com/in/alessandro-cascioli-778370149/",
+    scholar: "https://scholar.google.com/citations?user=Jg8dwfUAAAAJ&hl=en",
+    orcid: "https://orcid.org/0000-0002-4337-6716"
   },
   studies: [
     // studies, qualifications and certifications
     {
-      title: "Master of Applied Computing",
+      title: "PhD in Sustainable Energy and Technologies",
+      level: 'PhD',
+      institution: 'Free University of Bozen-Bolzano'
+    },
+    {
+      title: "M.Sc. in Energy Engineering",
       level: "Master",
+      institution: 'Free University of Bozen-Bolzano'
     },
     {
-      title: "AWS Cloud Professional",
-      institution: "AWS",
+      title: "B.E. in Mechanical Engineering",
+      level: "Bachelor",
+      institution: 'University of Perugia'
     },
     {
-      title: "Neo4j Certified Professional",
-      institution: "Neo4j",
+      title: "ISO 42001:2023 Auditor/Lead Auditor",
+      institution: "DIMITTO AG",
     },
     {
-      title: "ICAgile Certified Professional",
-      institution: "ICP",
+      title: "ESG-SDGs Rating:2022© Auditor/Lead Auditor and Consultant",
+      institution: "CERTIFICATION Srl",
     },
     {
-      title: "Full Stack Observability Practitioner",
-      institution: "New Relic",
+      title: "ISO 27001:2022 Auditor/Lead Auditor",
+      institution: "SGS",
+    },
+    {
+      title: "DeepLearning.AI TensorFlow Developer Specialization",
+      institution: "Coursera",
+    },
+    {
+      title: "State examination for the qualification to practice as an Energy and Nuclear Engineer",
+      institution: "University of Trento",
     },
   ],
 };

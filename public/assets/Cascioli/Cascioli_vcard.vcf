@@ -1,0 +1,17 @@
+BEGIN:VCARD
+VERSION:4.0
+
+FN:Alessandro Cascioli
+N:Cascioli;Alessandro;;;Eng., PhD
+GENDER:M
+TEL;TYPE=cell:+39 348 5637707
+EMAIL;TYPE=work:alessandro.cascioli@protonmail.com
+EMAIL;TYPE=work:alessandro.cascioli@unibz.it
+EMAIL;TYPE=work:alessandro.cascioli@ingpec.eu
+TITLE:Researcher/Consultant
+ORG:Free University of Bozen-Bolzano
+URL:https://www.alessandrocascioli.com
+URL:http://alex3ietksowmumwj7dudct7wqtvlihssnc2s2uqa76j4frgbot2inad.onion
+ADR;TYPE=work:;;Via Angelo Morettini, 27/L;Perugia;Umbria;06128;IT
+
+END:VCARD
