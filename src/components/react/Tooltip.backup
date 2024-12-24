@@ -1,9 +1,10 @@
 import React, { useState, Children } from "react";
-import { Button } from "../ui/button";
-import { Annoyed, Angry, Smile } from "lucide-react"
 
+type Props = {
+  children: React.ReactNode;
+};
 
-const Tooltip = () => {
+const Tooltip: React.FC<Props> = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [clickCount, setClickCount] = useState(0);
 
@@ -43,6 +44,8 @@ const Tooltip = () => {
     }
   };
 
+  // const arrayChildren = Children.toArray(children);
+
   return (
     <div className="relative inline-block">
       <div
@@ -52,13 +55,13 @@ const Tooltip = () => {
         onTouchStart={handleClick}
         onTouchEnd={() => setIsVisible(false)}
       >
-        <Button>
-          {
-            clickCount === 0 ?
-              <Smile size={24} /> : clickCount <= messages.length ?
-                <Annoyed size={24} /> : <Angry size={24} />
-          }
-        </Button>
+        {children}
+
+        {/* {React.Children.map(arrayChildren, (child, idx) => */}
+        {/*   idx === 0 ? <div>{child}</div> : null */}
+        {/* )} */}
+
+
       </div>
 
       {isVisible && (
