@@ -1,13 +1,11 @@
 ---
-import ProjectCard from 'src/components/ProjectCard.astro'
+import ProjectCard from "src/components/ProjectCard.astro";
 import { getCollection } from "astro:content";
-
 
 import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
 
-
 // read mdx files from projects folder as entities
-const posts = await getCollection('posts');
+const posts = await getCollection("posts");
 
 // sort projects by dateStart DESC
 posts.sort((a: any, b: any) => {
@@ -15,16 +13,18 @@ posts.sort((a: any, b: any) => {
 });
 ---
 
-<IndexPageLayout title="Blog" description="This is a simple blog for my this profile website."
-                 subTitle="My Simple Blog">
-
+<IndexPageLayout
+  title="Blog"
+  description="This is a simple blog for my this profile website."
+  subTitle="My Simple Blog"
+>
   <div class="grid grid-cols-3 gap-3">
     {
       posts.map((entity: any) => (
         <ProjectCard
           class=""
           key={entity.data.title}
-          href={'/posts/' + entity.slug}
+          href={"/posts/" + entity.id}
           heading={entity.data.title}
           subheading={entity.data.description}
           altText={entity?.data?.image.alt}
@@ -34,6 +34,4 @@ posts.sort((a: any, b: any) => {
       ))
     }
   </div>
-
-
 </IndexPageLayout>

@@ -1,8 +1,34 @@
 ---
-import ProjectCard from 'src/components/ProjectCard.astro'
+import ProjectCard from "src/components/ProjectCard.astro";
 import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
-import { getAndGroupUniqueTags } from "../../lib/utils";
+import { getCollection } from "astro:content";
 
+export const getAndGroupUniqueTags = async (): Promise<Map<string, any[]>> => {
+  const allProjects = await getCollection("projects");
+  const allExperiences = await getCollection("experiences");
+  const books = await getCollection("books");
+  const posts = await getCollection("posts");
+
+  const allItems = [...allProjects, ...allExperiences, ...books, ...posts];
+
+  // @ts-ignore
+  const uniqueTags: string[] = [
+    ...new Set(allProjects.map((post: any) => post.data.tags).flat()),
+    ...new Set(allExperiences.map((post: any) => post.data.tags).flat()),
+    ...new Set(books.map((post: any) => post.data.tags).flat()),
+    ...new Set(posts.map((post: any) => post.data.tags).flat()),
+  ];
+  const tagItemsMap = new Map<string, any[]>();
+
+  uniqueTags.forEach((tag) => {
+    const filteredItems = allItems.filter((item) =>
+      item?.data?.tags?.includes(tag),
+    );
+
+    tagItemsMap.set(tag, filteredItems);
+  });
+  return tagItemsMap;
+};
 
 /**
  * This is to fetch all unique tags and related content (project experience etc) for each tag
@@ -10,35 +36,42 @@ import { getAndGroupUniqueTags } from "../../lib/utils";
  **/
 export async function getStaticPaths() {
   const tagItemsMap = await getAndGroupUniqueTags();
-  console.log('tagItemsMap', tagItemsMap);
+  console.log("tagItemsMap", tagItemsMap);
 
-  const result = []
-  tagItemsMap.forEach(
-    (items, tag) => {
-      result.push({
-        params: {tag}, props: {items},
-      });
-    }
-  );
-  console.log('result', result, Object.keys(tagItemsMap));
+  const result = [];
+  tagItemsMap.forEach((items, tag) => {
+    result.push({
+      params: { tag },
+      props: { items },
+    });
+  });
+  console.log("result", result, Object.keys(tagItemsMap));
   return result;
 }
 
-const {tag} = Astro.params;
-const {items} = Astro.props;
+const { tag } = Astro.params;
+const { items } = Astro.props;
 ---
-<IndexPageLayout title={tag} description="A new dimension to access content of this website" subTitle={tag}>
- <div class="flex flex-col gap-3">
-  {
-    items?.map((post) =>
-      <>
-        <ProjectCard url={`/posts/${post.slug}/`} heading={post.data.title} subheading={post.data.description}
-                     imagePath={post.data?.image?.url}
-                     altText={post.data?.image?.alt} dateStart={post.data.startDate}
 
-        />
-      </>
-    )
-  }
- </div>
+<IndexPageLayout
+  title={tag}
+  description="A new dimension to access content of this website"
+  subTitle={tag}
+>
+  <div class="flex flex-col gap-3">
+    {
+      items?.map((post) => (
+        <>
+          <ProjectCard
+            url={`/posts/${post.id}/`}
+            heading={post.data.title}
+            subheading={post.data.description}
+            imagePath={post.data?.image?.url}
+            altText={post.data?.image?.alt}
+            dateStart={post.data.startDate}
+          />
+        </>
+      ))
+    }
+  </div>
 </IndexPageLayout>
