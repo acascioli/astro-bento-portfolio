@@ -17,7 +17,7 @@ export const PROFILE = {
   headLine2: "Driving a greener, smarter future through ethical ai, robust cybersecurity, and sustainable energy systems.",
   website: "https://alessandrocascioli.it",
   repo: "https://github.com/tim-hub/techtim-astro-bento-portfolio",
-  avatarUrl: "/assets/Cascioli/Cascioli_pic.jpg",
+  avatarUrl: "/assets/Cascioli/Cascioli_pic.jpeg",
   shortIntros: [
     "⚡️ Energy Engineer",
     "🤖 AI Enthusiast",
@@ -25,16 +25,17 @@ export const PROFILE = {
     "☘️ Passionate about constantly learning new stuff and bringing ideas to life",
     "📚 Book reader | 🎧 Music addicted",
   ],
-  words: ["Ignoranti quem portum petat nullus suus ventus est", "Non quia difficilia sunt non audemus, sed quia non audemus difficilia sunt"],
+  words:
+    [
+      { quote: "Ignoranti quem portum petat nullus suus ventus est.", author: 'Seneca' },
+      { quote: "Non quia difficilia sunt non audemus, sed quia non audemus difficilia sunt.", author: 'Seneca' },
+      { quote: "Do or do not. There is no try.", author: 'Yoda' },
+    ],
   skills: [
-    "Python / Django",
+    "Python",
     "JavaScript",
     "Typescript",
-    "AWS",
-    "Cloud Computing",
-    "Kubernetes",
-    "React",
-    "Node.js",
+    "React / React Native",
     "Postgres",
     "SQL",
     "Astro",
@@ -43,45 +44,54 @@ export const PROFILE = {
     github: "https://github.com/acascioli",
     onion: "http://alex3ietksowmumwj7dudct7wqtvlihssnc2s2uqa76j4frgbot2inad.onion",
     linkedin: "https://www.linkedin.com/in/alessandro-cascioli-778370149/",
-    scholar: "https://scholar.google.com/citations?user=Jg8dwfUAAAAJ&hl=en",
-    orcid: "https://orcid.org/0000-0002-4337-6716"
+    // scholar: "https://scholar.google.com/citations?user=Jg8dwfUAAAAJ&hl=en",
+    // orcid: "https://orcid.org/0000-0002-4337-6716"
   },
-  studies: [
-    // studies, qualifications and certifications
-    {
-      title: "PhD in Sustainable Energy and Technologies",
-      level: 'PhD',
-      institution: 'Free University of Bozen-Bolzano'
-    },
-    {
-      title: "M.Sc. in Energy Engineering",
-      level: "Master",
-      institution: 'Free University of Bozen-Bolzano'
-    },
-    {
-      title: "B.E. in Mechanical Engineering",
-      level: "Bachelor",
-      institution: 'University of Perugia'
-    },
-    {
-      title: "ISO 42001:2023 Auditor/Lead Auditor",
-      institution: "DIMITTO AG",
-    },
-    {
-      title: "ESG-SDGs Rating:2022© Auditor/Lead Auditor and Consultant",
-      institution: "CERTIFICATION Srl",
-    },
-    {
-      title: "ISO 27001:2022 Auditor/Lead Auditor",
-      institution: "SGS",
-    },
-    {
-      title: "DeepLearning.AI TensorFlow Developer Specialization",
-      institution: "Coursera",
-    },
-    {
-      title: "State examination for the qualification to practice as an Energy and Nuclear Engineer",
-      institution: "University of Trento",
-    },
-  ],
+  studies: {
+    uni:
+
+      [
+        // studies, qualifications and certifications
+        {
+          title: "PhD in Sustainable Energy and Technologies",
+          level: 'PhD',
+          institution: 'Free University of Bozen-Bolzano',
+        },
+        {
+          title: "M.Sc. in Energy Engineering",
+          level: "Master",
+          institution: 'Free University of Bozen-Bolzano'
+        },
+        {
+          title: "B.E. in Mechanical Engineering",
+          level: "Bachelor",
+          institution: 'University of Perugia'
+        },
+      ],
+    certs:
+
+      [
+        // studies, qualifications and certifications
+        {
+          title: "ISO 42001:2023 Auditor/Lead Auditor",
+          institution: "DIMITTO AG",
+        },
+        {
+          title: "ESG-SDGs Rating:2022© Auditor/Lead Auditor and Consultant",
+          institution: "CERTIFICATION Srl",
+        },
+        {
+          title: "ISO 27001:2022 Auditor/Lead Auditor",
+          institution: "SGS",
+        },
+        {
+          title: "DeepLearning.AI TensorFlow Developer Specialization",
+          institution: "Coursera",
+        },
+        {
+          title: "State examination for the qualification to practice as an Energy and Nuclear Engineer",
+          institution: "University of Trento",
+        },
+      ]
+  }
 };

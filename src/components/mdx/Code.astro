@@ -1,0 +1,55 @@
+---
+import CopyIcon from "../icons/CopyIcon.astro";
+import CheckIcon from "../icons/CheckIcon.astro";
+---
+
+<div
+  class="relative shadow-primary-light/20 dark:shadow-primary-dark/20 shadow-lg code code-container"
+>
+  <button
+    aria-label="copy-button"
+    class="copy-button absolute z-20 top-2 right-2 rounded-md transition-all ease-in max-w-full max-h-fit dark:text-gray-600 text-gray-400 hover:text-primary-light dark:hover:text-primary-dark"
+    ><CopyIcon /></button
+  ><span
+    class="check-span absolute z-10 top-2 right-2 rounded-md transition-all ease-in opacity-0 text-green-600 dark:text-green-400 max-w-full max-h-fit"
+    ><CheckIcon /></span
+  >
+  <pre
+    class="flex flex-col itmes-center justify-start">
+    <div class="h-2 w-2 spacer" />
+    <slot />
+  </pre>
+</div>
+
+<script>
+  const coppyBlock = () => {
+    const codeBlock = document.querySelectorAll(".code-container");
+
+    codeBlock.forEach((code) => {
+      const button = code.querySelector(".copy-button");
+      const check = code.querySelector(".check-span");
+
+      // Create a handler function that works for both click and touch events
+      const copyHandler = (event: Event) => {
+        // Prevent the event from being triggered twice
+        event.preventDefault();
+        // Copy the text from the code block
+        navigator.clipboard.writeText(code.textContent?.trim() || "");
+        // Show the check icon and hide the copy icon
+        check?.classList.remove("opacity-0");
+        button?.classList.add("opacity-0");
+        // Reset the icons after 2 seconds
+        setTimeout(() => {
+          check?.classList.add("opacity-0");
+          button?.classList.remove("opacity-0");
+        }, 2000);
+      };
+
+      // Add event listeners for both 'click' and 'touchend'
+      button!.addEventListener("click", copyHandler);
+      button!.addEventListener("touchend", copyHandler);
+    });
+  };
+  coppyBlock(); // initial load
+  document.addEventListener("astro:after-swap", coppyBlock); // re-run after each page change
+</script>

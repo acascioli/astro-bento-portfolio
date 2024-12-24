@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import MDXLayout from "../../layouts/MDXLayout.astro";
 import { render } from "astro:content";
+import Code from "../../components/mdx/Code.astro";
+import SButton from "../../components/mdx/SButton.astro";
 /**
   This is the dynamic route for projects
  **/
@@ -18,5 +20,5 @@ const { Content } = await render(entry);
 ---
 
 <MDXLayout frontmatter={entry.data}>
-  <Content />
+  <Content components={{ pre: Code, SButton }} />
 </MDXLayout>

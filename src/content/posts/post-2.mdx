@@ -1,0 +1,169 @@
+---
+slug: "dark-web"
+title: "Saying hello to the dark web"
+description: "Hosting My Personal Website on the Dark Web with a Raspberry Pi 5 and Astro"
+image:
+  url: "/assets/posts/post_2/post_2_4.png"
+  alt: "A screenshot of the my website hosted in the dark web taken from a Kali VM."
+startDate: 2024-08-30
+tags: ["astro", "dark web", "hosting", "coding"]
+---
+
+# Hosting My Personal Website on the Dark Web with a Raspberry Pi 5 and Astro
+
+Hello, fellow tech enthusiasts and curious minds! After diving deep into Astro for building my personal website, I felt the itch to explore beyond the conventional web and venture into the depths of the dark web. Thanks to [NetworkChuck’s tutorial](https://academy.networkchuck.com/blog/create-your-own-dark-web-website), I was able to achieve this exciting challenge using my Raspberry Pi 5. Here's a step-by-step account of my journey, from setting up the hardware to making my site accessible on the dark web.
+
+
+## The Setup: Raspberry Pi 5 and Astro
+
+### 1. Getting Started with Raspberry Pi 5
+
+First things first, I needed to get my Raspberry Pi 5 up and running. I followed the standard setup procedure:
+
+- **Download and Install OS**: I downloaded the Raspberry Pi Imager and flashed the latest Raspberry Pi OS onto a microSD card.
+- **Initial Configuration**: I booted up the Pi, completed the initial setup—including network configuration, SSH, SFTP, and system updates.
+
+### 2. Building the Website with Astro
+
+Astro, with its modern approach to building static sites, made it easy to create a sleek and fast website. Here’s a brief overview of what I did:
+
+- **Set Up Astro**: I initialized a new Astro project by running
+
+```bash
+pnpm create astro@latest
+```
+
+- **Develop the Website**: Using Astro’s components and markdown support, I crafted my personal website. I focused on a clean, minimal design to ensure fast load times. I used view transitions for the blog and a React island for customized shortcuts.
+- **Build and Test Locally**: Once my site was ready (or so I thought), I generated the static files and previewed the site locally.
+
+### 3. Hosting the Website Locally
+
+To host the website locally on the Raspberry Pi, I used **Nginx**. On Debian-based systems, you can install it with
+
+```bash
+apt install nginx
+```
+
+As soon as the installation is complete, the web server is up and running without any additional configuration.
+
+![nginx installed](/assets/posts/post_2/post_2_1.png)
+
+To host our static website, copy the website folder into _/var/www/_. Once done, edit the Nginx default site configuration by modifying the file _/etc/nginx/sites-available/default_. Look for the line _root /var/www/[dist]_.
+
+Before restarting the service with, it’s a good practice to test the configuration with
+
+```bash
+nginx -t
+```
+
+![nginx configured](/assets/posts/post_2/post_2_2.png)
+
+## Transitioning to the Dark Web
+
+### 1. Setting Up Tor
+
+To host a website on the dark web, you need Tor. Here’s how I set it up, following NetworkChuck’s guide:
+
+- **Install Prerequisites**: To enable all package managers using the libapt-pkg library to access metadata and packages over HTTPS:
+  ```bash
+  apt install apt-transport-https
+  ```
+- **Add Tor’s Repository and Install It**:
+
+  - Check your OS version:
+
+  ```bash
+  cat /etc/debian_version
+  ```
+
+  - Add Tor’s repository to the sources list:
+
+  ```bash
+  nano /etc/apt/sources.list.d/tor.list
+  ```
+
+  In the file, add the following two lines of code, replacing _"distribution"_ with your Debian version:
+
+  ```bash
+  deb [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org <DISTRIBUTION> main
+
+  deb-src [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org <DISTRIBUTION> main
+  ```
+
+  - Add the GPG key used to sign the packages by running:
+
+  ```bash
+  wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee /usr/share/keyrings/deb.torproject.org-keyring.gpg >/dev/null
+  ```
+
+  If you encounter issues (as I did), refer to [Tor project’s support](https://support.torproject.org/apt/).
+
+  - Install Tor and the Tor Debian keyring:
+
+  ```bash
+  apt update
+  apt install tor deb.torproject.org-keyring
+  ```
+
+### 2. Configuring Tor
+
+Unlike Nginx, Tor doesn’t automatically start hosting anything. You need to modify the file _/etc/tor/torrc_. Specifically, uncomment these two lines:
+
+```bash
+HiddenServiceDir /var/lib/tor/hidden_service
+HiddenServicePort 80 127.0.0.1:80
+```
+
+We’re almost in party mode! Now, retrieve your **onion address** and restart the Tor service to get things rolling:
+
+```bash
+cat /var/lib/tor/hidden_service/hostname
+
+systemctl restart tor
+```
+
+![tor configured](/assets/posts/post_2/post_2_3.png)
+
+### 3. Extra Fun: Vanity Onion Address
+
+It already feels great to have accomplished this small project. Nonetheless, I decided to go further and create a _Vanity Onion Address_. Here’s how:
+
+- **Install mkp224o**:
+  - Install Prerequisites:
+  ```bash
+  apt install gcc libc6-dev libsodium-dev make autoconf
+  ```
+  - Clone the Git repository:
+  ```bash
+  git clone https://github.com/cathugger/mkp224o.git
+  ```
+  - From the mkp224o directory:
+  ```bash
+  ./autogen.sh
+  ./configure
+  make
+  ```
+- **Generate a New Key**:
+
+  ```bash
+  ./mkp224o chuck -v -n 1 -d ~/supremeonionkey -t 4
+  ```
+
+  > Replace "chuck" with your desired key.<br/> > _I intentionally left the reference to Chuck._
+
+- **Copy the Key to the Hidden Service Directory**:
+  ```bash
+  cp * /var/lib/tor/hidden_service
+  ```
+- **Restart Tor**:
+  ```bash
+  systemctl restart tor
+  ```
+
+![tor configured with custom domain](/assets/posts/post_2/post_2_4.png)
+
+## Conclusion
+
+Hosting a personal website on the dark web was an exhilarating challenge, blending modern web technologies with advanced privacy measures. My Raspberry Pi 5 handled the task brilliantly, and the process taught me a lot about both web development and cybersecurity. If you're up for a unique project, give it a try—just be sure to follow best practices for security and privacy!
+
+Feel free to check out [NetworkChuck’s tutorial](https://www.youtube.com/watch?v=CurcakgurRE) for a detailed guide, and let me know if you have any questions or need further assistance. Happy hosting!
