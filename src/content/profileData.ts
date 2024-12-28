@@ -17,16 +17,17 @@ export const PROFILE = {
   email: 'alessandro.cascioli@protonmail.com',
   piva: '01708920556',
   headLine: "Learn, Share and Grow",
-  headLine2: "Driving a greener, smarter future through ethical ai, robust cybersecurity, and sustainable energy systems.",
+  headLine2: "Where Innovation Meets Responsibility: Empowering a Greener and Safer Tomorrow through Data-Driven Decision Making.",
   website: "https://alessandrocascioli.it",
   repo: "https://github.com/tim-hub/techtim-astro-bento-portfolio",
   avatarUrl: "/assets/Cascioli/Cascioli_pic.jpeg",
   shortIntros: [
     "⚡️ Energy Engineer",
+    "🥽 Postdoctoral Researcher",
+    "💻 Expertise in Software Development and Data Analysis",
     "🤖 AI Enthusiast",
-    "💻 Software/AI Engineer",
     "☘️ Passionate about constantly learning new stuff and bringing ideas to life",
-    "📚 Book reader | 🎧 Music addicted",
+    "🎧 Music addicted",
   ],
   words:
     [
@@ -34,14 +35,20 @@ export const PROFILE = {
       { quote: "Non quia difficilia sunt non audemus, sed quia non audemus difficilia sunt.", author: 'Seneca' },
       { quote: "Do or do not. There is no try.", author: 'Yoda' },
     ],
+  // skills: [
+  //   "Python",
+  //   "JavaScript",
+  //   "Typescript",
+  //   "React / React Native",
+  //   "Postgres",
+  //   "SQL",
+  //   "Astro",
+  // ],
   skills: [
-    "Python",
-    "JavaScript",
-    "Typescript",
-    "React / React Native",
-    "Postgres",
-    "SQL",
-    "Astro",
+    "Research",
+    "AIMS: Artificial Intelligence Management Systems",
+    "ISMS: Information Security Management Systems",
+    "ESG Rerporting"
   ],
   links: {
     github: "https://github.com/acascioli",

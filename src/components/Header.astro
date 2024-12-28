@@ -13,26 +13,24 @@ const SITE = PROFILE.site;
     class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0"
   >
     <div class="flex gap-2">
-      <div
-        class="hidden dark:block drop-shadow-[0_0_0.3rem_#00ff00] shadow-inner shadow-[#00ff00]/20 rounded-full"
-      >
-        <img
-          src={PROFILE.logo_dark}
-          width="60px"
-          height="auto"
-          alt={`logo of ${PROFILE.name}`}
-        />
-      </div>
-      <div
-        class="dark:hidden drop-shadow-[0_0_0.3rem_#0073E6] shadow-inner shadow-primary/20 rounded-full"
-      >
-        <img
-          src={PROFILE.logo}
-          width="60px"
-          height="auto"
-          alt={`logo of ${PROFILE.name}`}
-        />
-      </div>
+      <!--<div-->
+      <!--  class="hidden dark:block drop-shadow-[0_0_0.3rem_#00ff00] shadow-inner shadow-[#00ff00]/20 rounded-full"-->
+      <!--  <img-->
+      <!--    src={PROFILE.logo_dark}-->
+      <!--    width="60px"-->
+      <!--    height="auto"-->
+      <!--    alt={`logo of ${PROFILE.name}`}-->
+      <!--  />-->
+      <!--</div>-->
+      <!--<div-->
+      <!--  class="dark:hidden drop-shadow-[0_0_0.3rem_#0073E6] shadow-inner shadow-primary/20 rounded-full"-->
+      <!--  <img-->
+      <!--    src={PROFILE.logo}-->
+      <!--    width="60px"-->
+      <!--    height="auto"-->
+      <!--    alt={`logo of ${PROFILE.name}`}-->
+      <!--  />-->
+      <!--</div>-->
       <!--<img-->
       <!--  src={PROFILE.logo}-->
       <!--  class="pointer-events-none drop-shadow-xl"-->
@@ -40,7 +38,7 @@ const SITE = PROFILE.site;
       <!--  height="auto"-->
       <!--  alt={`logo of ${PROFILE.name}`}-->
       <!--/>-->
-      <a href="/" class="items-center space-x-2 hidden md:flex">
+      <a href="/" class="items-center space-x-2 flex">
         <span class="inline-block font-bold">{PROFILE.name}</span>
       </a>
     </div>
