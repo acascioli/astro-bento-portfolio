@@ -14,7 +14,6 @@ import {
 import { ArrowRight } from "lucide-react";
 
 const experiences = await getCollection("experiences");
-console.log(experiences);
 
 experiences.sort((a, b) => {
   return new Date(b.data.startDate) - new Date(a.data.startDate);

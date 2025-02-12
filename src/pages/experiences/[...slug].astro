@@ -8,8 +8,6 @@ import { render } from "astro:content";
  **/
 export async function getStaticPaths() {
   const experienceEntries = await getCollection("experiences");
-  console.log("ciao");
-  console.log(experienceEntries);
   return experienceEntries.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },

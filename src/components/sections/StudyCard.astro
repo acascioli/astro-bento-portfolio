@@ -1,12 +1,12 @@
 ---
-import Card from "../Card.astro";
 import { Badge } from "../ui/badge";
-import { shuffleArray } from "../../lib/utils";
 import { PROFILE } from "../../content/profileData";
+//import CertTip from "../react/Certs.tsx";
 ---
 
 <div>
   <p class="font-semibold pt-2">University</p>
+  <!--<CertTip />-->
   <div class="mt-2 flex w-full flex-wrap items-center justify-start gap-2">
     {
       PROFILE.studies.uni.map((study) => (
